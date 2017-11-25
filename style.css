@@ -1,0 +1,36 @@
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+#map {
+    height: 100%;
+    position: relative;
+    z-index: 98;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#cd-zoom-in,
+#cd-zoom-out {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    margin-left: 10px;
+    background-color: rgba(211, 104, 104, 0.9);
+    background-repeat: no-repeat;
+    background-size: 40px 80px;
+    background-image: url("https://codyhouse.co/demo/custom-google-map/img/cd-icon-controller.svg");
+    position: relative;
+    z-index: 99;
+}
+#cd-zoom-in {
+    background-position: 50% 0;
+    margin-top: 10px;
+    margin-bottom: 1px;
+  }
+
+#cd-zoom-out {
+background-position: 50% -40px;
+}
