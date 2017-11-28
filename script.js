@@ -256,15 +256,9 @@ function initMap() {
 
 
     var image = {
-        url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-location_1.svg',
-        // This marker is 20 pixels wide by 32 pixels high.
-        size: new google.maps.Size(48, 48),
-        // The origin for this image is (0, 0).
-        origin: new google.maps.Point(0, 0),
-        // The anchor for this image is the base of the flagpole at (0, 32).
-        anchor: new google.maps.Point(0, 32)
-      };
-
+        urls: ['icons/cd-icon-location_1.svg', 'icons/cd-icon-location_2.svg', 'icons/cd-icon-location_3.svg', 'icons/cd-icon-location_4.svg'],
+        size: new google.maps.Size(48, 48)
+    };
 
     var cities = [
 
@@ -331,23 +325,25 @@ function initMap() {
         ['Salou', 41.0777465, 1.1315925999999763],
     ];
 
-
     for (var i = 0; i < cities.length; i++) {
+        
         var city = cities[i];
-        addMarkerWithTimeout(city, i * 150);
+        var iconAleatoire = Math.floor(Math.random(i) * image.urls.length);
+        addMarkerWithTimeout(city, iconAleatoire, i * 150);
     }
 
+   
     var currentInfoWindow = null; 
 
-    function addMarkerWithTimeout(city, timeout){
+    function addMarkerWithTimeout(city, iconAleatoire, timeout){
         window.setTimeout(function() {
             var marker = new google.maps.Marker({
                 position: {lat: city[1], lng: city[2]},
                 map: map,
-                icon: image,
+                icon: image.urls[iconAleatoire],
                 animation: google.maps.Animation.DROP,
             });
-
+            
             var infowindow = new google.maps.InfoWindow({
                 content: city[0]
             });
