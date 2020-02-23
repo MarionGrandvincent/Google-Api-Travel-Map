@@ -257,7 +257,7 @@ function initMap() {
 
     var image = {
         urls: ['icons/cd-icon-location_1.svg', 'icons/cd-icon-location_2.svg', 'icons/cd-icon-location_3.svg', 'icons/cd-icon-location_4.svg'],
-        size: new google.maps.Size(48, 48)
+        size: new google.maps.Size(60, 60)
     };
 
     var cities = [
@@ -360,6 +360,26 @@ function initMap() {
             });
 
         }, timeout);
+    }
+
+
+    // HTML5 API GEOLOCATION
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success);
+      }
+      
+      function success(position) {
+        console.log(position)
+        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+       
+        
+        var marker = new google.maps.Marker({
+            position: latlng, 
+            map: map, 
+            title:"Vous êtes ici",
+            icon: 'icons/cd-icon-avatar.svg',
+            animation: google.maps.Animation.DROP
+        });
     }
 
 
